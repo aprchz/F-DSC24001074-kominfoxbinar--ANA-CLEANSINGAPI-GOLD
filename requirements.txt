@@ -1,0 +1,8 @@
+pandas
+matplotlib
+seaborn
+wordcloud
+flask
+flask-swagger-ui
+werkzeug
+sqlite3

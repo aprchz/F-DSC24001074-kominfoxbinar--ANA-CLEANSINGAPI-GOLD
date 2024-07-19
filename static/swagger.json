@@ -1,0 +1,84 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API Cleaning Fixin' Teks",
+    "version": "1.0.0"
+  },
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/clean_text": {
+      "post": {
+        "summary": "Membersihkan Teks",
+        "description": "Membersihkan teks dari kata kasar dan membetulkan teks typo",
+        "parameters": [
+          {
+            "name": "text",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Teks yang sudah dibersihkan",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "clean_text": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Masukkan tidak valid"
+          }
+        }
+      }
+    },
+    "/upload_csv": {
+      "post": {
+        "summary": "Unggah CSV",
+        "description": "Unggah dan bersihkan file CSV",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CSV yang sudah clear",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  },
+                  "clean_text": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Masukkan tidak valid"
+          }
+        }
+      }
+    }
+  }
+}
